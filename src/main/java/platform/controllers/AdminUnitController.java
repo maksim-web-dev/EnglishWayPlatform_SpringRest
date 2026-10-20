@@ -16,17 +16,11 @@ public class AdminUnitController {
 
     @PostMapping("admin/get-units")
     public CourseDto getUnits(@RequestBody CourseDto courseDto) {
-        System.out.println("AdminLessonController(get-units): CourseDto="+courseDto);
-        CourseDto dto = courseService.getCourseByIdAndUsername(courseDto.getId(), null);
-        System.out.println("AdminLessonController(get-units): return dto="+dto);
-        return dto;
+        return courseService.getCourseByIdAndUsername(courseDto.getId(), null);
     }
 
     @PostMapping("admin/update-units")
     public CourseDto updateUnits(@RequestBody CourseDto courseDto) {
-        System.out.println("AdminLessonController(update-units) post courseDto="+courseDto);
-        CourseDto resultCourseDto = courseService.updateCourse(courseDto);
-        System.out.println("AdminLessonController(update-units) return resultCourseDto="+resultCourseDto);
-        return courseDto;
+        return courseService.updateCourse(courseDto);
     }
 }

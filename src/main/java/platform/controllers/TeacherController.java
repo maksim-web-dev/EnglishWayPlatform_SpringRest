@@ -19,16 +19,10 @@ public class TeacherController {
 
     @PostMapping("teacher/get-student-activities")// by teacher
     public List<StudentActivityDto> getStudentsActivities() {
-        System.out.println("TeacherController(teacher/get-student-activities)");
-        List<StudentActivityDto> activitityList = studentService.getStudentsActivitiesForTeacher();
-        System.out.println("TeacherController(teacher/get-student-activities): return activitityList=" + activitityList);
-        return activitityList;
+        return studentService.getStudentsActivitiesForTeacher();
     }
     @PostMapping("teacher/get-student-units")// by teacher
     public List<StudentUnitDto> getStudents(ParamIdDto studentActivityId) {
-        System.out.println("TeacherController(teacher/get-students-units), studentActivityId="+studentActivityId);
-        List<StudentUnitDto> studentUnitDtoList = studentService.getStudentsForTeacher(studentActivityId.getId());
-        System.out.println("TeacherController(teacher/get-students-units): return studentUnitDtoList=" + studentUnitDtoList);
-        return studentUnitDtoList;
+        return studentService.getStudentsForTeacher(studentActivityId.getId());
     }
 }

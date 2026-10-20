@@ -1,12 +1,14 @@
 package platform.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
-@Data
 @Entity
-@Table(name="menu_items")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@Table(name = "menu_items")
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +17,7 @@ public class MenuItem {
     @Column
     private String name;
 
-    @Column(name="sort")
+    @Column(name = "sort")
     private int order;
 
     @Column
@@ -27,16 +29,18 @@ public class MenuItem {
     @Column
     private String title;
 
+    @ToString.Exclude
     @ManyToOne
-    @JoinColumn(name="type_id", nullable = true)
+    @JoinColumn(name = "type_id", nullable = true)
     private MenuType type;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = true)
     private Role role;
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="unit_id", nullable = true)
+    @JoinColumn(name = "unit_id", nullable = true)
     private Unit unit;
 }

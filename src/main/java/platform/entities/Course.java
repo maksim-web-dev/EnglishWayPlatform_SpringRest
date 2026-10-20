@@ -1,13 +1,16 @@
 package platform.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Data
-@Table(name="courses")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@Table(name = "courses")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +22,7 @@ public class Course {
     @Column
     private String img;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "level_id", nullable = true)
     private Level level;
@@ -26,6 +30,7 @@ public class Course {
     @Column
     private String complication;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "course",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,

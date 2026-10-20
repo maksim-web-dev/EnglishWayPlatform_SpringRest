@@ -17,16 +17,11 @@ public class AdminSettingsController {
 
     @PostMapping("admin/get-settings")
     public List<SettingsDto> getSettings() {
-        System.out.println("AdminSettingsController(get-settings)");
-        List<SettingsDto> list = settingService.getSettings();
-        System.out.println("AdminSettingsController(get-settings): return list=" + list);
-        return list;
+        return settingService.getSettings();
     }
     @PostMapping("admin/update-settings")
     public SettingsDto updateSettings(@RequestBody SettingsDto settingsDto) {
-        System.out.println("AdminSettingsController(update-settings): settingsDto=" + settingsDto);
         settingsDto = settingService.updateSettings(settingsDto);
-        System.out.println("AdminSettingsController(update-settings): return settingsDto=" + settingsDto);
         return settingsDto;
     }
 }

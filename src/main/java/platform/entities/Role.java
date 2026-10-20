@@ -1,10 +1,13 @@
 package platform.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 @Table(name = "roles")
 public class Role {
     @Id

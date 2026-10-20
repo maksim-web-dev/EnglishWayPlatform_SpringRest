@@ -1,20 +1,22 @@
 package platform.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@Table(name="histories")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@Table(name = "histories")
 public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="action_date")
+    @Column(name = "action_date")
     private LocalDateTime date;
 
     @Column

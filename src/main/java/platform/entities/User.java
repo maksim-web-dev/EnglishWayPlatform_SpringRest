@@ -1,19 +1,17 @@
 package platform.entities;
 
-
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
     @Id
@@ -41,6 +39,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             name = "users_roles",
