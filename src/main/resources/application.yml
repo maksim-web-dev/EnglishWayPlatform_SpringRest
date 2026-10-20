@@ -33,6 +33,16 @@ spring:
     password: your-mailtrap-password
 #  main:
 #    allow-circular-references: true
+logging:
+  level:
+    org.springdoc: DEBUG
+    org.springdoc.webmvc.api.OpenApiWebMvcResource: DEBUG
+springdoc:
+  api-docs:
+    path: /open-api/api-docs
+  swagger-ui:
+    path: /open-api/swagger-ui
+    display-request-duration: true
 
 registration:
   activate:
