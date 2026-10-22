@@ -57,16 +57,27 @@ public class EmailService {
     private void send(String toEmail, String subject, String text) throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-hh-mm-ss");
         String name = "email-" + dateFormat.format(new Date()) + ".txt";
-        File file = new File(emailDir, name);
+        System.out.println("Email to: " + toEmail + "\n");
+        System.out.println("Subject of email: " + subject + "\n");
+        System.out.println("email-text:"+ text);
 
-        FileWriter writer = new FileWriter(file);
-        writer.write("Email to: " + toEmail + "\n");
-        writer.write("Email from: " + emailFromAddress + "\n");
-        writer.write("Subject of email: " + subject + "\n");
-        writer.write("-------------------------\n");
-        writer.write("text:\n");
-        writer.write(text);
-        writer.close();
+//        try {
+//            File file = new File(emailDir, name);
+//
+//            FileWriter writer = new FileWriter(file);
+//            writer.write("Email to: " + toEmail + "\n");
+//            writer.write("Email from: " + emailFromAddress + "\n");
+//            writer.write("Subject of email: " + subject + "\n");
+//            writer.write("-------------------------\n");
+//            writer.write("text:\n");
+//            writer.write(text);
+//            writer.close();
+//        } catch (Exception e){
+//            System.out.println("Email to: " + toEmail + "\n");
+//            System.out.println("Subject of email: " + subject + "\n");
+//            System.out.println("email-text:"+ text);
+////            e.printStackTrace();
+//        }
 //        SimpleMailMessage message = new SimpleMailMessage();
 //        message.setTo(toEmail);
 //        message.setSubject(subject);

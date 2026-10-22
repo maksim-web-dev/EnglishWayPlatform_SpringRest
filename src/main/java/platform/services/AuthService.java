@@ -37,6 +37,7 @@ public class AuthService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
         } catch (BadCredentialsException e) {
+            e.printStackTrace();
             return ApiExceptionFactory.get(ApiExceptionFactory.INVALID_CREDENTIALS);
         }
         UserDetails userDetails = userService.loadUserByUsername(authRequest.getEmail());

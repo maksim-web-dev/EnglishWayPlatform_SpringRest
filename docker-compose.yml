@@ -1,5 +1,10 @@
 name: english-way
 
+networks:
+  way-network:
+    name: english-way
+    external: true
+
 services:
   db:
     image: postgres:16-alpine
@@ -12,6 +17,8 @@ services:
       - "${DB_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - way-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres}"]
       interval: 10s
@@ -23,6 +30,8 @@ services:
     container_name: app-backend
     ports:
       - "${SERVER_PORT:-8089}:${SERVER_PORT:-8089}"
+    networks:
+      - way-network
     env_file:
       - .env
     environment:
