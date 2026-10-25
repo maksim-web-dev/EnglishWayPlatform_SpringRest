@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  ECR_REPOSITORY: english-way-platform
+  ECR_REPOSITORY: english-way-backend
   ECS_CLUSTER: english-way-cluster
   ECS_SERVICE: english-way-service
   CONTAINER_NAME: english-way-platform
@@ -24,6 +24,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+#      - name: Debug OIDC claims
+#        uses: actions/checkout@v7
+#        with:
+#          script: |
+#            const token = await core
 
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
