@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 env:
   ECR_REPOSITORY: english-way-platform
@@ -23,7 +20,6 @@ jobs:
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
       - name: Checkout repository
