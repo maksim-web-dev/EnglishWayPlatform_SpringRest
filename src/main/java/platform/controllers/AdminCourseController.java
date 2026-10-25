@@ -18,31 +18,19 @@ public class AdminCourseController {
 
     @PostMapping("admin/get-courses")
     public List<CourseDto> getCourses() {
-        System.out.println("AdminCourseController(get-courses): empty");
-        List<CourseDto> list = courseService.getCoursesDto();
-        System.out.println("AdminCourseController(get-courses): list="+list);
-        return list;
+        return courseService.getCoursesDto();
     }
     @PostMapping("admin/create-course")
     public List<CourseDto> createCourse(@RequestBody CourseDto courseDto) {
-        System.out.println("AdminCourseController(create-course), courseDto="+courseDto);
-        List<CourseDto> list = courseService.createCourse(courseDto);
-        System.out.println("AdminCourseController(create-course) return list="+list);
-        return list;
+        return courseService.createCourse(courseDto);
     }
 
     @PostMapping("admin/update-course")
     public CourseDto saveCourse(@RequestBody CourseDto courseDto) {
-        System.out.println("AdminCourseController(update-course) post CourseDto="+courseDto);
-        CourseDto course = courseService.updateCourse(courseDto);
-        System.out.println("AdminCourseController(update-course) return course="+course);
-        return course;
+        return courseService.updateCourse(courseDto);
     }
     @PostMapping("admin/delete-course")
     public ResponseEntity<?> deleteCourse(@RequestBody CourseDto courseDto) {
-        System.out.println("AdminCourseController(delete-course) post courseDto="+courseDto);
-        ResponseEntity<?> result = courseService.deleteCourse(courseDto.getId());
-        System.out.println("AdminCourseController(delete-course) return result="+result);
-        return result;
+        return courseService.deleteCourse(courseDto.getId());
     }
 }

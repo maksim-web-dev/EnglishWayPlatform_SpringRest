@@ -1,11 +1,14 @@
 package platform.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
-@Table(name="content_types")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@Table(name = "content_types")
 public class ContentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,13 +1,16 @@
 package platform.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Data
-@Table(name="contents")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@Table(name = "contents")
 public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +28,23 @@ public class Content {
     @Column
     private String code;
 
-    @Column(name="sort")
+    @Column(name = "sort")
     private int order;
 
-    @Column(name="num_value")
+    @Column(name = "num_value")
     private int numValue;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = true)
     private ContentType type;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_item_id", nullable = true)
     private MenuItem menuItem;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "content", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ContentSentence> sentences;
 }

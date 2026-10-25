@@ -18,10 +18,7 @@ public class LevelTestController {
     // TODO ADD security check. only SuperContentManager
     @PostMapping("/auth/level-tests")
     public List<LevelTestDto> getLevelTests() {
-        System.out.println("LevelTestController(level-tests)");
-        List<LevelTestDto> list = levelTestService.getLevelTestsDto();
-        System.out.println("LevelTestController(level-tests) list="+list);
-        return list;
+        return levelTestService.getLevelTestsDto();
     }
 
 }

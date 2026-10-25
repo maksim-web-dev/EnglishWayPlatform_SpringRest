@@ -1,23 +1,14 @@
-CREATE TABLE `histories`
+CREATE TABLE lessons
 (
-    `id`      bigint(20) NOT NULL,
-    `user_id` bigint(20) NOT NULL,
-    `action_date`    timestamp NULL,
-    `type`    varchar(255) DEFAULT NULL,
-    `info`    varchar(255) DEFAULT NULL
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_general_ci;
+    id               bigserial PRIMARY KEY,
+    start_time       timestamp    NULL,
+    duration_minutes int          NULL,
+    topic            varchar(255) NULL,
+    activity_id      bigint       DEFAULT NULL,
+    status           varchar(20)  NOT NULL CHECK (status IN ('SCHEDULED', 'COMPLETED', 'CANCELLED', 'MOVED', 'NO_ACTION'))
+);
 
-ALTER TABLE `histories`
-    ADD PRIMARY KEY (`id`);
+CREATE INDEX idx_lessons_activity_id ON lessons (activity_id);
 
-ALTER TABLE `histories`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `histories`
-    ADD KEY `histories_user_id` (`user_id`);
-
-ALTER TABLE `histories`
-    ADD CONSTRAINT `histories_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-;
+ALTER TABLE lessons
+    ADD CONSTRAINT fk_lessons_activity_id FOREIGN KEY (activity_id) REFERENCES student_activities (id);

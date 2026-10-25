@@ -1,47 +1,49 @@
 server:
-  port: 8089
+  port: ${SERVER_PORT:8089}
   servlet:
     context-path: /api
+
 jwt:
-  lifetime: 3d
+  lifetime: ${JWT_LIFETIME:3d}
+
 token:
   signing:
-    key: 53A73E5F1C4E0A2D3B5F2D784E6A1B423D6F247D1F6E5C3A596D635A75327855
+    key: ${JWT_SIGNING_KEY}
+
 spring:
-  datasource:
-    url: jdbc:mariadb://localhost:3307/english-way?useSSL=false&serverTimezone=UTC
-    username: root1
-    password: root1
-    driver-class-name: org.mariadb.jdbc.Driver
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:file:./users;MODE=PostgreSQL
-#    url: jdbc:h2:mem:spring-security-sample
-#    username: root
-#    password: root
   jpa:
-    show-sql: true
-#    database-platform: org.hibernate.dialect.MariaDBDialect
+    show-sql: false
     hibernate:
-      ddl-auto: update
-#      ddl-auto: create-drop
+      ddl-auto: validate
   flyway:
     enabled: true
   mail:
-    host: smtp.mailtrap.io
-    port: 2525
-    username: your-mailtrap-username
-    password: your-mailtrap-password
-#  main:
-#    allow-circular-references: true
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT:2525}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+
+logging:
+  level:
+    org.springdoc: DEBUG
+
+springdoc:
+  api-docs:
+    path: /open-api/api-docs
+  swagger-ui:
+    path: /open-api/swagger-ui
+    display-request-duration: true
 
 registration:
   activate:
-    minute-expiration: 5
-    url: /activate?code=
+    minute-expiration: ${REGISTRATION_ACTIVATE_EXPIRE_MINUTES:5}
+    url: ${REGISTRATION_ACTIVATE_URL:/activate?code=}
   change-password:
-    url: /change?code=
+    url: ${REGISTRATION_CHANGE_PASSWORD_URL:/change?code=}
+
 frontend:
-  url: http://localhost:4200
+  url: ${FRONTEND_URL:http://localhost:4200}
+
 email:
-  from: support@english-way.com
-  email-dir: "c://temp//email"
+  from: ${EMAIL_FROM:support@english-way.com}
+  email-dir: ${EMAIL_DIR:/tmp/email}

@@ -15,9 +15,6 @@ public class AdminHistoryController {
 
     @PostMapping("admin/get-history")
     public List<HistoryDto> getHistory() {
-        System.out.println("AdminHistoryController(get-history): empty");
-        List<HistoryDto> list = historyService.getHistories();
-        System.out.println("AdminHistoryController(get-history): return list="+list);
-        return list;
+        return historyService.getHistories();
     }
 }
