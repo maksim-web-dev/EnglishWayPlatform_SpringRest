@@ -12,7 +12,6 @@ env:
   ECS_CLUSTER: english-way-cluster
   ECS_SERVICE: english-way-backend-service
   CONTAINER_NAME: english-way-backend
-#  TASK_DEFINITION: task-definition.json
   TASK_DEFINITION_FAMILY: english-way-backend-task
 
 permissions:
