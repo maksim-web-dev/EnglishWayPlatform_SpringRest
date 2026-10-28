@@ -8,12 +8,11 @@ on:
   workflow_dispatch:
 
 env:
-#  AWS_REGION: eu-central-1
   ECR_REPOSITORY: english-way-backend
   ECS_CLUSTER: english-way-cluster
-  ECS_SERVICE: english-way-service
-  CONTAINER_NAME: english-way-platform
-  TASK_DEFINITION: task-definition.json
+  ECS_SERVICE: english-way-backend-service
+  CONTAINER_NAME: english-way-backend
+  TASK_DEFINITION_FAMILY: english-way-backend-task
 
 permissions:
   id-token: write
@@ -55,20 +54,20 @@ jobs:
 
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
 
-#      # 5. Update image in ECS Task Definition
-#      - name: Render ECS task definition
-#        id: task-def
-#        uses: aws-actions/amazon-ecs-render-task-definition@v1
-#        with:
-#          task-definition: ${{ env.TASK_DEFINITION }}
-#          container-name: ${{ env.CONTAINER_NAME }}
-#          image: ${{ steps.build-image.outputs.image }}
-#
-#      # 6. Deploy updated Task Definition
-#      - name: Deploy to Amazon ECS
-#        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-#        with:
-#          task-definition: ${{ steps.task-def.outputs.task-definition }}
-#          service: ${{ env.ECS_SERVICE }}
-#          cluster: ${{ env.ECS_CLUSTER }}
-#          wait-for-service-stability: true
+      # 5. Update image in ECS Task Definition
+      - name: Render ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition-family: ${{ env.TASK_DEFINITION_FAMILY }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
+
+      # 6. Deploy updated Task Definition
+      - name: Deploy to Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true

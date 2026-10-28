@@ -29,7 +29,7 @@ services:
     build: .
     container_name: app-backend
     ports:
-      - "${SERVER_PORT:-8089}:${SERVER_PORT:-8089}"
+      - "${SERVER_PORT:-8080}:${SERVER_PORT:-8089}"
     networks:
       - way-network
     env_file:
