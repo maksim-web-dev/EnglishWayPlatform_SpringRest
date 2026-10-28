@@ -55,20 +55,20 @@ jobs:
 
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
 
-#      # 5. Update image in ECS Task Definition
-#      - name: Render ECS task definition
-#        id: task-def
-#        uses: aws-actions/amazon-ecs-render-task-definition@v1
-#        with:
-#          task-definition: ${{ env.TASK_DEFINITION }}
-#          container-name: ${{ env.CONTAINER_NAME }}
-#          image: ${{ steps.build-image.outputs.image }}
-#
-#      # 6. Deploy updated Task Definition
-#      - name: Deploy to Amazon ECS
-#        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-#        with:
-#          task-definition: ${{ steps.task-def.outputs.task-definition }}
-#          service: ${{ env.ECS_SERVICE }}
-#          cluster: ${{ env.ECS_CLUSTER }}
-#          wait-for-service-stability: true
+      # 5. Update image in ECS Task Definition
+      - name: Render ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.TASK_DEFINITION }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
+
+      # 6. Deploy updated Task Definition
+      - name: Deploy to Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
