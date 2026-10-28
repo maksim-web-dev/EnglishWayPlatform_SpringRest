@@ -8,12 +8,12 @@ on:
   workflow_dispatch:
 
 env:
-#  AWS_REGION: eu-central-1
   ECR_REPOSITORY: english-way-backend
   ECS_CLUSTER: english-way-cluster
-  ECS_SERVICE: english-way-service
-  CONTAINER_NAME: english-way-platform
-  TASK_DEFINITION: task-definition.json
+  ECS_SERVICE: english-way-backend-service
+  CONTAINER_NAME: english-way-backend
+#  TASK_DEFINITION: task-definition.json
+  TASK_DEFINITION_FAMILY: english-way-backend-task
 
 permissions:
   id-token: write
@@ -60,7 +60,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ${{ env.TASK_DEFINITION }}
+          task-definition-family: ${{ env.TASK_DEFINITION_FAMILY }}
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
