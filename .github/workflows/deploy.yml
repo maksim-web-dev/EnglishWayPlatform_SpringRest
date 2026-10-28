@@ -11,7 +11,7 @@ env:
   ECR_REPOSITORY: english-way-backend
   ECS_CLUSTER: english-way-cluster
   ECS_SERVICE: english-way-backend-service
-  CONTAINER_NAME: english-way-backend
+  CONTAINER_NAME: backend
   TASK_DEFINITION_FAMILY: english-way-backend-task
 
 permissions:
