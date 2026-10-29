@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService {
     private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
     private final TimeUtils timesUtil;
-    private final RoleRepository roleRepository;
+//    private final RoleRepository roleRepository;
 
     public User getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
