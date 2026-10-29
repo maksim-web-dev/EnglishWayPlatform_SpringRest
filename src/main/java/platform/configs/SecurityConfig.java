@@ -49,10 +49,8 @@ public class SecurityConfig {
                 .cors(cors -> cors.configure(http))
 
                 .authorizeHttpRequests((authorize) -> authorize
-//                                .requestMatchers("/secured").authenticated()
                                 .requestMatchers("/auth/**").permitAll()
-//                                .requestMatchers("/info").permitAll()
-
+                                .requestMatchers("/actuator/health", "/actuator/health/**").permitAll()
                                 .requestMatchers("/open-api/**").permitAll()
                                 .requestMatchers("/teacher").hasAnyRole("TEACHER")
 
