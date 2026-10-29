@@ -11,19 +11,19 @@ import javax.sql.DataSource;
 @Configuration
 public class PostgresConfig {
 
-    @Value("${DB_HOST:localhost}")
+    @Value("${database.postgres.host}")
     private String host;
 
-    @Value("${DB_PORT:5432}")
+    @Value("${database.postgres.port}")
     private int port;
 
-    @Value("${DB_NAME:english-way}")
+    @Value("${database.postgres.name}")
     private String dbName;
 
-    @Value("${DB_USERNAME:postgres}")
+    @Value("${database.postgres.username}")
     private String username;
 
-    @Value("${DB_PASSWORD:postgres}")
+    @Value("${database.postgres.password}")
     private String password;
 
     @Bean

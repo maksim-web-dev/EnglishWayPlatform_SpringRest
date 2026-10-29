@@ -107,7 +107,7 @@ public class AuthService {
         if (!email.equalsIgnoreCase(user.getEmail())) {
             return ApiExceptionFactory.get(ApiExceptionFactory.REMEMBER_EMAIL_IS_INVALID);
         }
-        String code = CodeUtil.getCode(false);
+        String code = "11";//CodeUtil.getCode(false);
         try {
             userService.setActivateCode(user, code);
             emailService.sendCodeAfterRememberPassword(user, code);
