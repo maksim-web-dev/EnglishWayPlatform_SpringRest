@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LocalizedHelper {
-    private static String enAngularFile = "C:/projects/gitHubProjects/EnglishWayPlatformAngular/public/i18n/en.json";
-    private static String ruAngularFile = "C:/projects/gitHubProjects/EnglishWayPlatformAngular/public/i18n/ru.json";
-    private static String ukrAngularFile = "C:/projects/gitHubProjects/EnglishWayPlatformAngular/public/i18n/ukr.json";
+    private static String enAngularFile = "/public/i18n/en.json";
+    private static String ukrAngularFile = "/public/i18n/ukr.json";
     private static String startLineForJsonFile = "  ";
 
     public static void main(String[] args) {
