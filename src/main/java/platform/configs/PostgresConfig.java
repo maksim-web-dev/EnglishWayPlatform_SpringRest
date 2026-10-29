@@ -29,6 +29,11 @@ public class PostgresConfig {
     @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
+        System.out.println("host="+host);
+        System.out.println("port="+port);
+        System.out.println("dbName="+dbName);
+        System.out.println("username="+username);
+        System.out.println("password="+password);
         config.setJdbcUrl(String.format("jdbc:postgresql://%s:%d/%s", host, port, dbName));
         config.setUsername(username);
         config.setPassword(password);
