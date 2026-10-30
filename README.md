@@ -154,6 +154,4 @@ The backend has been deployed to AWS and integrated with the separately hosted A
 
 The Angular frontend is maintained in a **separate repository**. 
 Add its GitHub URL is 
-```
 https://github.com/maksim-web-dev/EnglishWayPlatform_Angular
-```
