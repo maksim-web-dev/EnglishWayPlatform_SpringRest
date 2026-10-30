@@ -27,9 +27,11 @@ GitHub Actions --(OIDC)--> Amazon ECR --> ECS deployment
                       CloudWatch Logs / Secrets Manager
 ```
 
+The AWS VPC separates the infrastructure into **public subnets for the ALB**, **private application subnets for ECS**, and **database subnets for RDS**, across two Availability Zones. ECS tasks access required AWS services through VPC endpoints rather than a NAT gateway.
+
 ![arch.png](arch.png)
 
-The AWS VPC separates the infrastructure into **public subnets for the ALB**, **private application subnets for ECS**, and **database subnets for RDS**, across two Availability Zones. ECS tasks access required AWS services through VPC endpoints rather than a NAT gateway.
+Network architecture
 
 ![img.png](network.png)
 
