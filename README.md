@@ -29,7 +29,7 @@ GitHub Actions --(OIDC)--> Amazon ECR --> ECS deployment
 
 The AWS VPC separates the infrastructure into **public subnets for the ALB**, **private application subnets for ECS**, and **database subnets for RDS**, across two Availability Zones. ECS tasks access required AWS services through VPC endpoints rather than a NAT gateway.
 
-> **Security note:** The initial demo architecture used HTTPS at CloudFront with HTTP between CloudFront and the ALB. For production use, configure HTTPS on the CloudFront-to-origin connection before transmitting real credentials or tokens. Do not treat the deployment as production-hardened without reviewing this setting.
+> **Security note:** The initial demo architecture used HTTPS at CloudFront with HTTP between CloudFront and the ALB. For production use, we should configure HTTPS on the CloudFront-to-origin connection before transmitting real credentials or tokens.
 
 ## Technology stack
 
@@ -131,6 +131,8 @@ The deployed AWS components include:
 7. **CloudWatch Logs** — captures application output and startup errors.
 8. **CloudFront** — routes API requests to the ALB and serves the Angular frontend from S3.
 
+![img.png](network.png)
+
 ### CI/CD workflow
 
 On changes to the backend repository's deployment branch, GitHub Actions:
@@ -145,7 +147,6 @@ IAM permissions for the GitHub deployment role and the ECS task execution role a
 
 ## Configuration and security
 
-- **Never commit secrets**, `.env` files containing credentials, or private keys.
 - The ECS task definition uses environment variables for non-sensitive settings and `valueFrom` for `DB_PASSWORD`.
 - Only the ALB is intended to be publicly reachable; ECS tasks and the RDS instance remain in private subnets.
 - The RDS security group permits PostgreSQL traffic on port `5432` from the ECS task security group.
