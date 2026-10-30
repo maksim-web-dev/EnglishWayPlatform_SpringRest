@@ -62,11 +62,7 @@ The backend provides REST endpoints for the English-way application, including a
 
 ### Requirements
 
-- Java 17
-- PostgreSQL
-- Gradle, or the Gradle wrapper if included in the repository
-
-Create a PostgreSQL database and set the following environment variables:
+Create the .env file based on .env.sample.
 
 | Variable | Purpose | Example |
 | --- | --- | --- |
@@ -79,21 +75,12 @@ Create a PostgreSQL database and set the following environment variables:
 
 The application reads these values through `application.yml` and uses the `/api` servlet context path.
 
-If the repository includes the Gradle wrapper, run:
+Locally this project required Docker Desktop.
+Project start by command:
 
 ```bash
-./gradlew bootRun
+docker compose -f docker-compose.yml -up
 ```
-
-Or build and run the JAR:
-
-```bash
-./gradlew bootJar
-java -jar build/libs/<generated-jar-name>.jar
-```
-
-On Windows, use `gradlew.bat` instead of `./gradlew`.
-
 The application may require additional project-specific configuration values (such as frontend URL or JWT settings); consult `application.yml` and the relevant security configuration before running it.
 
 ### Health check
