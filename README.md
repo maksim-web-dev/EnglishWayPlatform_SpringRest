@@ -101,15 +101,6 @@ Expected successful response:
 
 The Actuator health endpoint is permitted without authentication so that the AWS ALB can monitor backend readiness.
 
-## Docker
-
-The backend is packaged using a multi-stage Docker build: Gradle compiles the application and a Java 17 runtime image runs the resulting JAR.
-
-```bash
-docker build -t english-way-backend .
-```
-
-Pass database settings securely when running the container; do not bake credentials into the image.
 
 ## AWS deployment
 
@@ -153,5 +144,4 @@ The backend has been deployed to AWS and integrated with the separately hosted A
 ## Related repository
 
 The Angular frontend is maintained in a **separate repository**. 
-Add its GitHub URL is 
-https://github.com/maksim-web-dev/EnglishWayPlatform_Angular
+Add its GitHub URL is https://github.com/maksim-web-dev/EnglishWayPlatform_Angular
