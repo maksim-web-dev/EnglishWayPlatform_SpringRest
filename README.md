@@ -29,11 +29,11 @@ GitHub Actions --(OIDC)--> Amazon ECR --> ECS deployment
 
 The AWS VPC separates the infrastructure into **public subnets for the ALB**, **private application subnets for ECS**, and **database subnets for RDS**, across two Availability Zones. ECS tasks access required AWS services through VPC endpoints rather than a NAT gateway.
 
-![arch.png](arch.png)
+![arch.png](docs/arch.png)
 
 Network architecture
 
-![img.png](network.png)
+![img.png](docs/network.png)
 
 > **Security note:** The initial demo architecture used HTTPS at CloudFront with HTTP between CloudFront and the ALB. For production use, we should configure HTTPS on the CloudFront-to-origin connection before transmitting real credentials or tokens.
 
@@ -146,4 +146,4 @@ The backend has been deployed to AWS and integrated with the separately hosted A
 The Angular frontend is maintained in a **separate repository**. 
 Add its GitHub URL is https://github.com/maksim-web-dev/EnglishWayPlatform_Angular
 
-![img.png](screen.png)
+![img.png](docs/screen.png)
