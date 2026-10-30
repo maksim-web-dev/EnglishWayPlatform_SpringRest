@@ -29,6 +29,8 @@ GitHub Actions --(OIDC)--> Amazon ECR --> ECS deployment
 
 The AWS VPC separates the infrastructure into **public subnets for the ALB**, **private application subnets for ECS**, and **database subnets for RDS**, across two Availability Zones. ECS tasks access required AWS services through VPC endpoints rather than a NAT gateway.
 
+![img.png](network.png)
+
 > **Security note:** The initial demo architecture used HTTPS at CloudFront with HTTP between CloudFront and the ALB. For production use, we should configure HTTPS on the CloudFront-to-origin connection before transmitting real credentials or tokens.
 
 ## Technology stack
@@ -131,7 +133,6 @@ The deployed AWS components include:
 7. **CloudWatch Logs** — captures application output and startup errors.
 8. **CloudFront** — routes API requests to the ALB and serves the Angular frontend from S3.
 
-![img.png](network.png)
 
 ### CI/CD workflow
 
