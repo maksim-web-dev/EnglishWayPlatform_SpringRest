@@ -29,6 +29,10 @@ GitHub Actions --(OIDC)--> Amazon ECR --> ECS deployment
 
 The AWS VPC separates the infrastructure into **public subnets for the ALB**, **private application subnets for ECS**, and **database subnets for RDS**, across two Availability Zones. ECS tasks access required AWS services through VPC endpoints rather than a NAT gateway.
 
+![arch.png](arch.png)
+
+Network architecture
+
 ![img.png](network.png)
 
 > **Security note:** The initial demo architecture used HTTPS at CloudFront with HTTP between CloudFront and the ALB. For production use, we should configure HTTPS on the CloudFront-to-origin connection before transmitting real credentials or tokens.
@@ -97,15 +101,6 @@ Expected successful response:
 
 The Actuator health endpoint is permitted without authentication so that the AWS ALB can monitor backend readiness.
 
-## Docker
-
-The backend is packaged using a multi-stage Docker build: Gradle compiles the application and a Java 17 runtime image runs the resulting JAR.
-
-```bash
-docker build -t english-way-backend .
-```
-
-Pass database settings securely when running the container; do not bake credentials into the image.
 
 ## AWS deployment
 
@@ -148,4 +143,5 @@ The backend has been deployed to AWS and integrated with the separately hosted A
 
 ## Related repository
 
-The Angular frontend is maintained in a **separate repository**. Add its GitHub URL here once available.
+The Angular frontend is maintained in a **separate repository**. 
+Add its GitHub URL is https://github.com/maksim-web-dev/EnglishWayPlatform_Angular
